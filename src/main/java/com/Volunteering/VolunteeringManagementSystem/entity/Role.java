@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-public abstract class Role {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Role implements Employee{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,16 +18,22 @@ public abstract class Role {
     @Embedded
     private ContactInfo contactInfo;
 
+    @Enumerated
+    private RoleType roleType;
+
     public Role() {}
 
-    public Role(String roleName, String username, String password, ContactInfo contactInfo) {
+
+    public Role(String roleName, String username, String password, ContactInfo contactInfo, RoleType roleType) {
         this.roleName = roleName;
         this.username = username;
         this.password = password;
         this.contactInfo = contactInfo;
+        this.roleType = roleType;
     }
 
     // Mathods
+    // Validate credentials to ensure that user is authorized to access the system
     public void validateCredentials()
     {
 
@@ -36,5 +43,14 @@ public abstract class Role {
     {
 
         return "Your password has changed successfully!";
+    }
+
+    public void signUp(Role role)
+    {
+
+    }
+    public void login(String username, String password)
+    {
+
     }
 }
