@@ -8,7 +8,7 @@ import lombok.Data;
 
 public interface Employee {
 
-    // Methods
+// METHODS
 
     // Validate credentials to ensure that user is authorized to access the system
     public void validateCredentials();

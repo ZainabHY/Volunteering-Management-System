@@ -3,11 +3,12 @@ package com.Volunteering.VolunteeringManagementSystem.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Random;
 
 @Entity
 @Data
-@Table(name = "tbl_volunteer")
+@Table(name = "tbl_volunteers")
 public class Volunteer extends Role{
 
     @Id
@@ -22,8 +23,16 @@ public class Volunteer extends Role{
 
     private int volunteeringHours;
 
+    public Volunteer(String roleName, String username, String password, ContactInfo contactInfo, String skills, Availability availability, List<Project> assignedProjects, int volunteeringHours) {
+        super(roleName, username, password, contactInfo);
+        this.volunteerId = generateId();
+        this.skills = skills;
+        this.availability = availability;
+        this.assignedProjects = assignedProjects;
+        this.volunteeringHours = volunteeringHours;
+    }
 
-// METHODS
+    // METHODS
     public String registerInProgram(Program program)
     {
 
@@ -36,7 +45,9 @@ public class Volunteer extends Role{
         return "";
     }
 
-     // Generating unique ID for the volunteer
+
+////////////////
+     // Generating unique ID for the Volunteer
      // which begins with "vol" followed by 4 numbers
     private String generateId() {
         int uniqueNumber = getUniqueNumber(); // Retrieve a unique number based on the current timestamp

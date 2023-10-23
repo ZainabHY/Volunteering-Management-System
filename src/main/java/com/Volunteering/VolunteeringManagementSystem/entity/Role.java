@@ -3,6 +3,8 @@ package com.Volunteering.VolunteeringManagementSystem.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+@Entity
+@Table(name = "tbl_role")
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Role implements Employee{
@@ -23,7 +25,16 @@ public abstract class Role implements Employee{
 
     public Role() {}
 
+    // Constructor for all the common attributes for Manager and Volunteer
+    // WITHOUT id and roleType
+    public Role(String roleName, String username, String password, ContactInfo contactInfo) {
+        this.roleName = roleName;
+        this.username = username;
+        this.password = password;
+        this.contactInfo = contactInfo;
+    }
 
+    // Constructor for all attributes in Role
     public Role(String roleName, String username, String password, ContactInfo contactInfo, RoleType roleType) {
         this.roleName = roleName;
         this.username = username;
@@ -32,7 +43,8 @@ public abstract class Role implements Employee{
         this.roleType = roleType;
     }
 
-    // Mathods
+
+// METHODS
     // Validate credentials to ensure that user is authorized to access the system
     public void validateCredentials()
     {
