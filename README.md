@@ -1,7 +1,7 @@
 # The Structure of the Volunteering Management System
 * **UML class diagram**
 
-![Volunteering MS UML Class Diagram](Volunteering Management System.png)
+!["Volunteering MS UML Class Diagram"]('Volunteering Management System.png')
 **Steps for Service and Controller Layers**
 
 **1. Service Interface**
