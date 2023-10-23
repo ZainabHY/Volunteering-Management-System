@@ -21,7 +21,7 @@ public class Program {
 
     //Relationship
     @ManyToOne
-    @JoinColumn(name = "managerId")
+    @JoinColumn(name = "manager_id")
     private Manager manager;
 
     public Program() {}

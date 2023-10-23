@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -16,8 +17,9 @@ public class City {
 
     private String cityName;
 
-    // The projects for each city
-    private List<Project> projects;
+    // Many projects for each city
+    @OneToMany(mappedBy = "city")
+    private Set<Project> projects;
 
 
     // For retrieving all Projects Along with CITY from DB

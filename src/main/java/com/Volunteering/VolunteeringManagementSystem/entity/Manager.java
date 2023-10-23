@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -15,11 +16,12 @@ public class Manager extends Role{
     private String managerId;
 
     // The programs that the manager supervised
-    private List<Program> supervisedPrograms;
+    @OneToMany(mappedBy = "manager")
+    private Set<Program> supervisedPrograms;
 
     public Manager(){}
 
-    public Manager(String roleName, String username, String password, ContactInfo contactInfo, List<Program> supervisedPrograms) {
+    public Manager(String roleName, String username, String password, ContactInfo contactInfo, Set<Program> supervisedPrograms) {
         super(roleName, username, password, contactInfo);
         this.managerId = generateId();
         this.supervisedPrograms = supervisedPrograms;

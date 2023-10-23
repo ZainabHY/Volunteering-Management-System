@@ -3,8 +3,10 @@ package com.Volunteering.VolunteeringManagementSystem.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 @Entity
 @Data
@@ -19,11 +21,17 @@ public class Volunteer extends Role{
     @Enumerated
     private Availability availability;
 
-    private List<Project> assignedProjects;
+    @ManyToMany
+    @JoinTable(
+            name = "volunteer_project",
+            joinColumns = @JoinColumn(name = "volunteer_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
+    private Set<Project> assignedProjects = new HashSet<>();
 
     private int volunteeringHours;
 
-    public Volunteer(String roleName, String username, String password, ContactInfo contactInfo, String skills, Availability availability, List<Project> assignedProjects, int volunteeringHours) {
+    public Volunteer(String roleName, String username, String password, ContactInfo contactInfo, String skills, Availability availability, Set<Project> assignedProjects, int volunteeringHours) {
         super(roleName, username, password, contactInfo);
         this.volunteerId = generateId();
         this.skills = skills;

@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -22,6 +24,9 @@ public class Project {
     private String duration;
     private List<String> skillsRequired;
     private ProjectStatus projectStatus;
+
+    @ManyToOne
+    @JoinColumn(name= "city_id")
     private City city;
 
     //Relationship
@@ -29,7 +34,12 @@ public class Project {
     @JoinColumn(name = "managerId")
     private Manager manager;
 
+    // Relationship
+    @ManyToMany(mappedBy = "assignedProjects")
+    private Set<Volunteer> volunteers = new HashSet<>();
+
     public Project() {}
+
 
 
 
