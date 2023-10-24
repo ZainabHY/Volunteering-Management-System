@@ -27,6 +27,7 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Override
     public Volunteer addVolunteer(Volunteer volunteer) {
+        volunteer.setRoleId(volunteer.customIdGenerator(volunteer));
         return volunteerRepository.save(volunteer);
     }
 

@@ -18,7 +18,7 @@ public class Volunteer extends Role{
 
     private String skills;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Availability availability;
 
     @ManyToMany

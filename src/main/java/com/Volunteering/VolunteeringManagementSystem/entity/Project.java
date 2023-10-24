@@ -23,6 +23,8 @@ public class Project {
     private String location;
     private String duration;
     private List<String> skillsRequired;
+
+    @Enumerated(EnumType.STRING)
     private ProjectStatus projectStatus;
 
     @ManyToOne
