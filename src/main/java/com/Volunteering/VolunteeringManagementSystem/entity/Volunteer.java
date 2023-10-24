@@ -11,8 +11,9 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "tbl_volunteers")
+@PrimaryKeyJoinColumn(name = "volunteer_id") // setting the id name as volunteer_id instead of role_id
+@AttributeOverride(name = "roleId", column = @Column(name = "volunteer_id"))
 public class Volunteer extends Role{
-
 
 
     private String skills;
@@ -57,16 +58,16 @@ public class Volunteer extends Role{
 ////////////////
      // Generating unique ID for the Volunteer
      // which begins with "vol" followed by 4 numbers
-    private String generateId() {
-        int uniqueNumber = getUniqueNumber(); // Retrieve a unique number based on the current timestamp
-
-        return "vol" + String.format("%04d", uniqueNumber);
-    }
-
-    // This method generates a unique number based on the current timestamp
-    private int getUniqueNumber() {
-        long timestamp = System.currentTimeMillis();
-        return (int) (timestamp % 10000);
-    }
+//    private String generateId() {
+//        int uniqueNumber = getUniqueNumber(); // Retrieve a unique number based on the current timestamp
+//
+//        return "vol" + String.format("%04d", uniqueNumber);
+//    }
+//
+//    // This method generates a unique number based on the current timestamp
+//    private int getUniqueNumber() {
+//        long timestamp = System.currentTimeMillis();
+//        return (int) (timestamp % 10000);
+//    }
 
 }

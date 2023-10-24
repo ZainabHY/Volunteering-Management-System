@@ -13,7 +13,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "tbl_managers")
-
+@PrimaryKeyJoinColumn(name = "manager_id") // setting the id name as manager_id instead of role_id
+@AttributeOverride(name = "roleId", column = @Column(name = "manager_id"))
 public class Manager extends Role{
 
 

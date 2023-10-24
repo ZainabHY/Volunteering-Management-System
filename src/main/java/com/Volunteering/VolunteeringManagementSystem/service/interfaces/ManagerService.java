@@ -23,5 +23,8 @@ public interface ManagerService {
     public List<Manager> addMultipleManagers(List<Manager> manager);
 
     // Delete Manager
-    public void deleteManager(String managerId);
+    public String deleteManager(String managerId);
+
+    // Update Manager
+    public String updateManager(String managerId, Manager manager);
 }

@@ -28,6 +28,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public Manager addManager(Manager manager) {
+        manager.setRoleId(manager.customIdGenerator(manager));
         return managerRepository.save(manager);
     }
 
@@ -37,8 +38,43 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public void deleteManager(String managerId) {
-        managerRepository.deleteById(managerId);
+    public String deleteManager(String managerId) {
+//        managerRepository.deleteById(managerId);
 //        return "Manager with ID: " + managerId + " deleted successfully";
+
+        Optional<Manager> foundManager = managerRepository.findById(managerId);
+
+        // 1. Checking if managerId is present int the DB
+        if(foundManager.isPresent())
+        {
+            // 2. Delete the manager from DB
+            managerRepository.deleteById(managerId);
+            return "Manager with ID: " + managerId + " deleted successfully";
+        }
+        else
+            return "Manager with ID: " + managerId + " not found";
+    }
+
+    @Override
+    public String updateManager(String managerId, Manager manager) {
+        Optional<Manager> foundManager = managerRepository.findById(managerId);
+
+        // 1. Checking if managerId is present int the DB
+        if(foundManager.isPresent())
+        {
+            // 2. Setting the NEW values
+            manager.setRoleName(manager.getRoleName());
+            manager.setUsername(manager.getUsername());
+            manager.setPassword(manager.getPassword());
+            manager.setContactInfo(manager.getContactInfo());
+            manager.setRoleType(manager.getRoleType());
+            manager.setSupervisedPrograms(manager.getSupervisedPrograms());
+
+            // 3. Save them in DB
+            managerRepository.save(manager);
+            return "Manager with ID: " + managerId + " updated successfully";
+        }
+        else
+            return "Manager with ID: " + managerId + " not found";
     }
 }
