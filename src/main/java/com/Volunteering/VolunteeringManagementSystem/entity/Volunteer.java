@@ -13,8 +13,7 @@ import java.util.Set;
 @Table(name = "tbl_volunteers")
 public class Volunteer extends Role{
 
-    @Id
-    private String volunteerId;
+
 
     private String skills;
 
@@ -31,9 +30,10 @@ public class Volunteer extends Role{
 
     private int volunteeringHours;
 
+    public Volunteer(){}
     public Volunteer(String roleName, String username, String password, ContactInfo contactInfo, String skills, Availability availability, Set<Project> assignedProjects, int volunteeringHours) {
         super(roleName, username, password, contactInfo);
-        this.volunteerId = generateId();
+
         this.skills = skills;
         this.availability = availability;
         this.assignedProjects = assignedProjects;
@@ -41,11 +41,11 @@ public class Volunteer extends Role{
     }
 
     // METHODS
-    public String registerInProgram(Program program)
-    {
-
-        return "";
-    }
+//    public String registerInProgram(Program program)
+//    {
+//
+//        return "";
+//    }
 
     public String updateInfo()
     {

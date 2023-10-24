@@ -18,7 +18,7 @@ public class Project {
 
     private String projectName;
     private String description;
-    private Program program;
+//    private Program program;
 
     private String location;
     private String duration;
@@ -30,9 +30,9 @@ public class Project {
     private City city;
 
     //Relationship
-    @ManyToOne
-    @JoinColumn(name = "managerId")
-    private Manager manager;
+//    @ManyToOne
+//    @JoinColumn(name = "managerId")
+//    private Manager manager;
 
     // Relationship
     @ManyToMany(mappedBy = "assignedProjects")
@@ -40,7 +40,18 @@ public class Project {
 
     public Project() {}
 
-
+    public Project(String projectName, String description, String location, String duration, List<String> skillsRequired, ProjectStatus projectStatus, City city, Set<Volunteer> volunteers) {
+        this.projectId = getProjectId();
+        this.projectName = projectName;
+        this.description = description;
+        this.location = location;
+        this.duration = duration;
+        this.skillsRequired = skillsRequired;
+        this.projectStatus = projectStatus;
+        this.city = city;
+//        this.manager = manager;
+        this.volunteers = volunteers;
+    }
 
 
 // METHODS
