@@ -30,9 +30,9 @@ public class Project {
     @Enumerated(EnumType.STRING)
     private ProjectStatus projectStatus;
 
-    @ManyToOne
-    @JoinColumn(name= "city_id")
-    private City city;
+//    @ManyToOne
+//    @JoinColumn(name= "city_id")
+//    private City city;
 
     //Relationship
 //    @ManyToOne
@@ -45,15 +45,15 @@ public class Project {
 
     public Project() {}
 
-    public Project(String projectName, String description, String location, String duration, List<String> skillsRequired, ProjectStatus projectStatus, City city, Set<Volunteer> volunteers) {
-        this.projectId = getProjectId();
+    public Project(String projectName, String description, String location, String duration, List<String> skillsRequired, ProjectStatus projectStatus, Set<Volunteer> volunteers) {
+        this.projectId = generateId();
         this.projectName = projectName;
         this.description = description;
         this.location = location;
         this.duration = duration;
         this.skillsRequired = skillsRequired;
         this.projectStatus = projectStatus;
-        this.city = city;
+//        this.city = city;
 //        this.manager = manager;
         this.volunteers = volunteers;
     }

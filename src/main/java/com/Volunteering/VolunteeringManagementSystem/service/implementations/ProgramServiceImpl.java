@@ -37,7 +37,7 @@ public class ProgramServiceImpl implements ProgramService {
 
         @Override
         public Optional<Program> getProgramByName(String programName) {
-            return programRepository.findByProgramName(programName);
+            return Optional.ofNullable(programRepository.findByProgramName(programName));
         }
 
 

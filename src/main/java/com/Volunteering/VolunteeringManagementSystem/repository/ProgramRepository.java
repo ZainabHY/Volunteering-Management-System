@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProgramRepository extends JpaRepository<Program, String> {
     Program findByProgramName(String programName);
+
+    Program findByProgramId(String programId);
 }

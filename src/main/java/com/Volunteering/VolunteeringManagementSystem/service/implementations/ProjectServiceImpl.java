@@ -52,7 +52,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         //Save the project with the associated manager
         // By retrieving the manager id and look if it is exists
-        Program program = programRepository.findByProgramName(project.getProgram().getProgramId());
+        Program program = programRepository.findByProgramId(project.getProgram().getProgramId());
         if (program != null)
         {
             project.setProgram(program);
@@ -72,7 +72,17 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public String deleteProject(String projectId) {
-        return null;
+        Optional<Project> foundProject = projectRepository.findById(projectId);
+
+        // 1. Checking if project with ID projectId is present int the DB
+        if(foundProject.isPresent())
+        {
+            // 2. Delete the project from DB
+            projectRepository.deleteById(projectId);
+            return "Project with ID: " + projectId + " deleted successfully";
+        }
+        else
+            return "Sorry, project with ID: " + projectId + " not found";
     }
 
     @Override
