@@ -24,20 +24,37 @@ public class ProgramServiceImpl implements ProgramService {
 
     // 2. Create the implementations of the methods in Program Service Interface
 
-    @Override
-    public List<Program> getAllPrograms() {
-        return programRepository.findAll();
-    }
 
-    @Override
-    public Optional<Program> getProgramById(String programId) {
-        return programRepository.findById(programId);
-    }
+        @Override
+        public List<Program> getAllPrograms() {
+            return programRepository.findAll();
+        }
 
-    @Override
-    public Optional<Program> getProgramByName(String programName) {
-        return programRepository.findByProgramName(programName);
-    }
+        @Override
+        public Optional<Program> getProgramById(String programId) {
+            return programRepository.findById(programId);
+        }
+
+        @Override
+        public Optional<Program> getProgramByName(String programName) {
+            return programRepository.findByProgramName(programName);
+        }
+
+
+//    @Override
+//    public List<Program> getAllPrograms() {
+//        return programRepository.findAll();
+//    }
+//
+//    @Override
+//    public Optional<Program> getProgramById(String programId) {
+//        return programRepository.findById(programId);
+//    }
+//
+//    @Override
+//    public Optional<Program> getProgramByName(String programName) {
+//        return programRepository.findByProgramName(programName);
+//    }
 
     @Override
     public String addProgram(Program program) {

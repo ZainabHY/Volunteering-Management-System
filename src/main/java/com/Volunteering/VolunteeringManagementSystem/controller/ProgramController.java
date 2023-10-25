@@ -28,26 +28,51 @@ public class ProgramController {
     }
 
     // Get all programs --> GET Request
+//    @GetMapping("/getAllPrograms")
+//    public List<Program> getAllPrograms(){
+//        return programService.getAllPrograms();
+//    }
+//
+//
+//    // Get program by PROGRAM ID --> Using PATH VARIABLE
+//    @GetMapping("/getProgramById/{programId}")
+//    public Optional<Program> getProgramById(@PathVariable String programId)
+//    {
+//        return programService.getProgramById(programId);
+//    }
+//
+//    // Get program by PROGRAM NAME --> Using PATH VARIABLE
+//    @GetMapping("/getProgramByName/{programName}")
+//    public Optional<Program> getProgramByName(@PathVariable String programName)
+//    {
+//        return programService.getProgramByName(programName);
+//    }
+
+
     @GetMapping("/getAllPrograms")
-    public List<Program> getAllPrograms(){
+    public List<Program> getAllPrograms() {
         return programService.getAllPrograms();
     }
 
-
-    // Get program by PROGRAM ID --> Using PATH VARIABLE
     @GetMapping("/getProgramById/{programId}")
-    public Optional<Program> getProgramById(@PathVariable String programId)
-    {
-        return programService.getProgramById(programId);
+    public ResponseEntity<Program> getProgramById(@PathVariable String programId) {
+        Optional<Program> program = programService.getProgramById(programId);
+        if (program.isPresent()) {
+            return ResponseEntity.ok(program.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    // Get program by PROGRAM NAME --> Using PATH VARIABLE
     @GetMapping("/getProgramByName/{programName}")
-    public Optional<Program> getProgramByName(@PathVariable String programName)
-    {
-        return programService.getProgramByName(programName);
+    public ResponseEntity<Program> getProgramByName(@PathVariable String programName) {
+        Optional<Program> program = programService.getProgramByName(programName);
+        if (program.isPresent()) {
+            return ResponseEntity.ok(program.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-
 
     // Adding a new Program --> POST Request
     @PostMapping("/addProgram")

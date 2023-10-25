@@ -91,7 +91,7 @@ public class Project {
 ////////////////////
     // Generating unique ID for the Project
     // which begins with "proj" followed by 4 numbers
-    private String generateId() {
+public String generateId() {
         int uniqueNumber = getUniqueNumber(); // Retrieve a unique number based on the current timestamp
 
         return "proj" + String.format("%04d", uniqueNumber);

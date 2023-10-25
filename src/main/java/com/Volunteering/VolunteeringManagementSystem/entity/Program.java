@@ -17,7 +17,6 @@ import java.util.List;
 public class Program {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String programId;
 
     private String programName;
@@ -30,36 +29,6 @@ public class Program {
     @JoinColumn(name = "role_id")
     private Manager manager;
 
-//    @ManyToOne
-//    @JoinColumn(name = "managerId")
-//    private Manager manager;
-
-//        @Id
-//        @Column(name = "program_id", columnDefinition = "VARCHAR(50)")
-//
-//        private String programId;
-//
-//        @Column(name = "program_name", columnDefinition = "VARCHAR(255)")
-//        private String programName;
-//
-//        @Column(name = "description", columnDefinition = "TEXT")
-//        private String description;
-//
-//        @Column(name = "start_date", columnDefinition = "DATE")
-//        private String startDate;
-//
-//        @Column(name = "end_date", columnDefinition = "DATE")
-//        private String endDate;
-
-    // Relationship
-//        @ManyToOne(fetch = FetchType.LAZY)
-//        @JoinColumn(name = "roleId", columnDefinition = "VARCHAR(255)")
-//        private Manager manager;
-
-//        @JdbcTypeCode(SqlTypes.JSON)
-//        @ManyToOne(fetch = FetchType.LAZY)
-//        @JoinColumn(name = "role_id")
-//        private Manager manager;
 
     public Program() {}
 
