@@ -40,6 +40,13 @@ public class VolunteerController {
         return volunteerService.getVolunteerById(volunteerId);
     }
 
+    // Get volunteer by AVAILABILITY
+    @GetMapping("/getVolunteerByAvailability/{availability}")
+    public Optional<Volunteer> getVolunteerByAvailability(@PathVariable String availability)
+    {
+        return volunteerService.getVolunteerByAvailability(availability);
+    }
+
 
     // Adding a new Volunteer --> POST Request
     @PostMapping("/addVolunteer")

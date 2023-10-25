@@ -18,6 +18,8 @@ public interface VolunteerService {
     // 2. Get volunteer by VOLUNTEER ID --> Using Query Parameter
     public Optional<Volunteer> getVolunteerById(String volunteerId);
 
+    public Optional<Volunteer> getVolunteerByAvailability(String availability);
+
     // Adding a new Volunteer --> POST Request
     public Volunteer addVolunteer(Volunteer volunteer);
 

@@ -25,6 +25,15 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
+    public Optional<Volunteer> getVolunteerByAvailability(String availability) {
+        // Converting the availability from String to Enum value
+        Availability availabilityStrTOEnum = parseAvailability(availability);
+
+        // Passing the Enum value to the method (findByAvailability)
+        return volunteerRepository.findByAvailability(availabilityStrTOEnum);
+    }
+
+    @Override
     public Volunteer addVolunteer(Volunteer volunteer) {
         volunteer.setRoleId(volunteer.customIdGenerator(volunteer));
         return volunteerRepository.save(volunteer);
@@ -80,80 +89,6 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     // Partial update of volunteer data
-//    @Override
-//    public String partialUpdateVolunteer(String volunteerId, HashMap<String, Object> updatedVolunteer) {
-//        Optional<Volunteer> foundVolunteer = volunteerRepository.findById(volunteerId);
-//        String msg = "";
-//
-//        // 1. Checking if volunteer with ID volunteerId is present int the DB
-//        if (foundVolunteer.isPresent())
-//        {
-//            Volunteer existingVolunteer = foundVolunteer.get();
-////            existingVolunteer.setRoleId(existingVolunteer.customIdGenerator(existingVolunteer));
-//
-//
-//            for (HashMap.Entry<String, Object> entry : updatedVolunteer.entrySet()) {
-//                String fieldName = entry.getKey();
-//                Object fieldValue = entry.getValue();
-//
-//                // Update the specified field if it exists
-//                // and Setting the NEW values
-//                switch (fieldName) {
-//                    case "roleName":
-//                        existingVolunteer.setRoleName((String) fieldValue);
-//                        break;
-//
-//                    case "username":
-//                        existingVolunteer.setUsername((String) fieldValue);
-//                        break;
-//
-//                    case "password":
-//                        existingVolunteer.setPassword((String) fieldValue);
-//                        break;
-//
-//                    case "contactInfo":
-//                        existingVolunteer.setContactInfo((ContactInfo) fieldValue);
-//                        break;
-//
-//                    case "roleType":
-//                        existingVolunteer.setRoleType((RoleType) fieldValue);
-//                        break;
-//
-//                    case "skills":
-//                        existingVolunteer.setSkills((String) fieldValue);
-//                        break;
-//
-//                    case "availability":
-//                        existingVolunteer.setAvailability((Availability) fieldValue);
-//                        break;
-//
-//                    case "assignedProjects":
-//                        existingVolunteer.setAssignedProjects((Set<Project>) fieldValue);
-//                        break;
-//
-//                    case "volunteeringHours":
-//                        existingVolunteer.setVolunteeringHours((int) fieldValue);
-//                        break;
-//                }
-//            }
-//
-//            // 3. Save it to DB
-//            volunteerRepository.save(existingVolunteer);
-//            msg = "Volunteer with Volunteer ID: " + volunteerId + " updated successfully";
-//        }
-//
-//        else
-//        {
-//            msg = "Sorry, volunteer with Volunteer ID: " + volunteerId + " not found";
-//
-//        }
-//        return msg;
-//
-//    }
-
-    ////////
-
-
     @Override
     public String partialUpdateVolunteer(String volunteerId, Map<String, Object> updatedVolunteer) {
         Optional<Volunteer> foundVolunteer = volunteerRepository.findById(volunteerId);
