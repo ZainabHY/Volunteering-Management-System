@@ -4,6 +4,7 @@ import com.Volunteering.VolunteeringManagementSystem.entity.Volunteer;
 import com.Volunteering.VolunteeringManagementSystem.service.implementations.VolunteerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -56,7 +57,20 @@ public class VolunteerController {
     }
 
     // Adding multiple new Volunteers --> POST Request
-//    public List<Volunteer> addMultipleVolunteers(List<Volunteer> volunteer);
+    @PostMapping("/addMultipleVolunteers")
+    public ResponseEntity<String> addMultipleVolunteers(@RequestBody List<Volunteer> volunteer)
+    {
+        try{
+            volunteerService.addMultipleVolunteer(volunteer);
+            String msg = "All provided Volunteers added successfully";
+            return ResponseEntity.status(HttpStatus.OK).body(msg);
+        }
+        catch (Exception e)
+        {
+            String errMsg = "Volunteers provided not added successfully \n\n" + e.getMessage();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errMsg);
+        }
+    }
 
     // Delete Volunteer
     @DeleteMapping("/deleteVolunteer/{volunteerId}")

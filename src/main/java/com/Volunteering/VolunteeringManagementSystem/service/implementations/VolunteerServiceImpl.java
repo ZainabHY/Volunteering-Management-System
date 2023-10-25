@@ -35,12 +35,20 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Override
     public Volunteer addVolunteer(Volunteer volunteer) {
+        // Set ID for volunteer
         volunteer.setRoleId(volunteer.customIdGenerator(volunteer));
         return volunteerRepository.save(volunteer);
     }
 
     @Override
     public List<Volunteer> addMultipleVolunteer(List<Volunteer> volunteers) {
+        // Set IDs for volunteers
+        for(Volunteer volunteer: volunteers)
+        {
+            String volunteerId = volunteer.customIdGenerator(volunteer);
+            volunteer.setRoleId(volunteerId);
+        }
+
         return volunteerRepository.saveAll(volunteers);
     }
 

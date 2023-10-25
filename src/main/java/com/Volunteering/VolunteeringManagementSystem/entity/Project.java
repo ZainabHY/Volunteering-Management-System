@@ -18,7 +18,10 @@ public class Project {
 
     private String projectName;
     private String description;
-//    private Program program;
+
+    @ManyToOne
+    @JoinColumn(name = "program_id")
+    private Program program;
 
     private String location;
     private String duration;
