@@ -2,7 +2,9 @@ package com.Volunteering.VolunteeringManagementSystem.service.interfaces;
 
 import com.Volunteering.VolunteeringManagementSystem.entity.Volunteer;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface VolunteerService {
@@ -25,6 +27,10 @@ public interface VolunteerService {
     // Delete Volunteer
     public String deleteVolunteer(String volunteerId);
 
-    // Update Volunteer
+    // Update Volunteer --> PUT
     public String updateVolunteer(String volunteerId, Volunteer volunteer);
+
+    // Partial Update Volunteer --> PATCH
+    // Using MAP instead of HashMap for better type safety and flexibility
+    public String partialUpdateVolunteer(String volunteerId, Map<String, Object> updatedVolunteer);
 }

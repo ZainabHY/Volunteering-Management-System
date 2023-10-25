@@ -3,8 +3,10 @@ package com.Volunteering.VolunteeringManagementSystem.controller;
 import com.Volunteering.VolunteeringManagementSystem.entity.Volunteer;
 import com.Volunteering.VolunteeringManagementSystem.service.implementations.VolunteerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,10 +57,19 @@ public class VolunteerController {
         return volunteerService.deleteVolunteer(volunteerId);
     }
 
-    // Update Volunteer
+    // Update Volunteer --> using Put
     @PutMapping("/updateVolunteer/{volunteerId}")
     public String updateVolunteer(@PathVariable String volunteerId, @RequestBody Volunteer volunteer)
     {
         return volunteerService.updateVolunteer(volunteerId, volunteer);
+    }
+
+    // Update Volunteer --> using Patch
+    // --> Just updating the needed properties
+    @PatchMapping("/partialUpdateVolunteer/{volunteerId}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public String  partialUpdateVolunteer(@PathVariable String volunteerId, @RequestBody HashMap<String, Object> updatedVolunteer)
+    {
+        return volunteerService.partialUpdateVolunteer(volunteerId, updatedVolunteer);
     }
 }

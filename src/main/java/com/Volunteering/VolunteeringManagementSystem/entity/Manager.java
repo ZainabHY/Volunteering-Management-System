@@ -30,7 +30,6 @@ public class Manager extends Role{
 
     public Manager(String roleName, String username, String password, ContactInfo contactInfo) {
         super(roleName, username, password, contactInfo);
-
     }
 
 // METHODS

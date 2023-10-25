@@ -52,14 +52,14 @@ public class ManagerServiceImpl implements ManagerService {
             return "Manager with ID: " + managerId + " deleted successfully";
         }
         else
-            return "Manager with ID: " + managerId + " not found";
+            return "Sorry, manager with ID: " + managerId + " not found";
     }
 
     @Override
     public String updateManager(String managerId, Manager manager) {
         Optional<Manager> foundManager = managerRepository.findById(managerId);
 
-        // 1. Checking if managerId is present int the DB
+        // 1. Checking if manager with ID managerId is present int the DB
         if(foundManager.isPresent())
         {
             // 2. Setting the NEW values
@@ -75,6 +75,8 @@ public class ManagerServiceImpl implements ManagerService {
             return "Manager with ID: " + managerId + " updated successfully";
         }
         else
-            return "Manager with ID: " + managerId + " not found";
+            return "Sorry, manager with ID: " + managerId + " not found";
     }
+
+
 }
