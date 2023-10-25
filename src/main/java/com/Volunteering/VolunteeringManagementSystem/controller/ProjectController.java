@@ -37,10 +37,10 @@ public class ProjectController {
     }
 
     // Get project by PROGRAM NAME --> Using PATH VARIABLE
-    @GetMapping("/getProjectByName/{projectName}")
-    public Optional<Project> getProjectByName(@PathVariable String projectName)
+    @GetMapping("/findByProjectName/{projectName}")
+    public Project getProjectByName(@PathVariable String projectName)
     {
-        return projectService.getProjectByName(projectName);
+        return projectService.findByProjectName(projectName);
     }
 
     // Adding a new Project --> POST Request

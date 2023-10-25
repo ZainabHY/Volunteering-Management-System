@@ -136,9 +136,9 @@ public class ProgramServiceImpl implements ProgramService {
 
             // 3. Save the updated program to the database
             programRepository.save(existingProgram);
-            return "Volunteer with Volunteer ID: " + programId + " updated successfully";
+            return "Program with Program ID: " + programId + " updated successfully";
         } else {
-            return "Sorry, program with Volunteer ID: " + programId + " not found";
+            return "Sorry, program with Program ID: " + programId + " not found";
         }
     }
 

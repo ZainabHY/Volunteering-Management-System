@@ -1,16 +1,17 @@
 package com.Volunteering.VolunteeringManagementSystem.service.implementations;
 
-import com.Volunteering.VolunteeringManagementSystem.entity.Manager;
 import com.Volunteering.VolunteeringManagementSystem.entity.Program;
 import com.Volunteering.VolunteeringManagementSystem.entity.Project;
 import com.Volunteering.VolunteeringManagementSystem.repository.ProgramRepository;
 import com.Volunteering.VolunteeringManagementSystem.repository.ProjectRepository;
 import com.Volunteering.VolunteeringManagementSystem.service.interfaces.ProjectService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 
@@ -33,10 +34,22 @@ public class ProjectServiceImpl implements ProjectService {
         return projectRepository.findById(projectId);
     }
 
+//    @Override
+//    public Optional<Project> getProjectByName(String projectName) {
+//        return projectRepository.findByProjectName(projectName);
+//    }
+
+@PersistenceContext
+private EntityManager entityManager;
+
     @Override
-    public Optional<Project> getProjectByName(String projectName) {
-        return projectRepository.findByProjectName(projectName);
+    public Project findByProjectName(String projectName) {
+        TypedQuery<Project> query = entityManager.createQuery(
+                "SELECT p FROM Project p WHERE p.projectName = :projectName", Project.class);
+        query.setParameter("projectName", projectName);
+        return query.getSingleResult();
     }
+
 
     @Override
     public Optional<Project> getProjectsByProgramName(String projectId) {
@@ -65,10 +78,10 @@ public class ProjectServiceImpl implements ProjectService {
         return msg;
     }
 
-    @Override
-    public String addMultipleProjects(List<Project> projects) {
-        return null;
-    }
+//    @Override
+//    public String addMultipleProjects(List<Project> projects) {
+//        return null;
+//    }
 
     @Override
     public String deleteProject(String projectId) {
@@ -87,11 +100,27 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public String updateProject(String projectId, Project project) {
-        return null;
+        Optional<Project> foundProject = projectRepository.findById(projectId);
+
+        // 1. Checking if project with ID projectId is present in DB
+        if (foundProject.isPresent()) {
+            Project existingProject = foundProject.get();
+
+            // 2. Set the new values
+            existingProject.setProjectName(project.getProjectName());
+            existingProject.setDescription(project.getDescription());
+            existingProject.setProgram(project.getProgram());
+            existingProject.setLocation(project.getLocation());
+            existingProject.setDuration(project.getDuration());
+            existingProject.setProjectStatus(project.getProjectStatus());
+            existingProject.setVolunteers(project.getVolunteers());
+
+            // 3. Save the updated project to the database
+            projectRepository.save(existingProject);
+            return "Project with Project ID: " + projectId + " updated successfully";
+        } else {
+            return "Sorry, program with Project ID: " + projectId + " not found";
+        }
     }
 
-    @Override
-    public String partialUpdateProject(String projectId, Map<String, Object> updatedProject) {
-        return null;
-    }
 }

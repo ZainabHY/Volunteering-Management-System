@@ -36,4 +36,8 @@ public interface VolunteerService {
     // Using MAP instead of HashMap for better type safety and flexibility
     // and to preserve types of the values
     public String partialUpdateVolunteer(String volunteerId, Map<String, Object> updatedVolunteer);
+
+
+    // as Sign Up
+    public boolean registerVolunteer(Volunteer volunteer);
 }

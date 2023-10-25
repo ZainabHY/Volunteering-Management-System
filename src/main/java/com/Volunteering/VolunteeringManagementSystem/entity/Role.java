@@ -53,25 +53,13 @@ public abstract class Role implements Employee{
 
 // METHODS
     // Validate credentials to ensure that user is authorized to access the system
-    public void validateCredentials()
-    {
+    public abstract boolean validateCredentials();
 
-    }
+    public abstract boolean changePassword();
 
-    public String changePassword()
-    {
 
-        return "Your password has changed successfully!";
-    }
-
-    public void signUp(Role role)
-    {
-
-    }
-    public void login(String username, String password)
-    {
-
-    }
+    public abstract boolean signUp(Role role);
+    public abstract boolean login(String username, String password);
 
     //////////
 

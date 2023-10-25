@@ -32,6 +32,52 @@ public class Manager extends Role{
         super(roleName, username, password, contactInfo);
     }
 
+    @Override
+    public boolean signUp(Role role) {
+        try
+        {
+            System.out.println("Manager Registration: " + getUsername());
+            return true;
+        }
+        catch (Exception e)
+        {
+            System.err.println("Manager Registration Failed" + e.getMessage());
+            return false;
+        }
+    }
+
+    // Login method for Manager --> With error handling (try-catch)
+    @Override
+    public boolean login(String username, String password) {
+        try
+        {
+            if(getUsername().equals(username) && getPassword().equals(password))
+            {
+                System.out.println("Manager login successfully!");
+                return true;
+            }
+            System.out.println("Manager login failed");
+            return false;
+        }
+        catch (Exception e)
+        {
+            System.err.println("Manager login failed" + e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validateCredentials() {
+        return false;
+    }
+
+    @Override
+    public boolean changePassword() {
+        return false;
+    }
+
+
+
 // METHODS
 
     // Retrieve a list of all volunteers from the DB
@@ -85,19 +131,4 @@ public class Manager extends Role{
 //
 //        return "Project with ID: " + projectId + " updated successfully";
 //    }
-//
-//
-//    ////////////////
-//    // Generating unique ID for the Manager
-//    // which begins with "mgr" followed by 4 numbers
-//    private String generateId() {
-//        int uniqueNumber = getUniqueNumber(); // Retrieve a unique number based on the current timestamp
-//
-//        return "mgr" + String.format("%04d", uniqueNumber);
-//    }
-//
-//    // This method generates a unique number based on the current timestamp
-//    private int getUniqueNumber() {
-//        long timestamp = System.currentTimeMillis();
-//        return (int) (timestamp % 10000);
 }

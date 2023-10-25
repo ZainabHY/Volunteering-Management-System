@@ -15,7 +15,9 @@ public interface ProjectService {
 
 
     // Get project by PROJECT NAME
-    public Optional<Project> getProjectByName(String projectId);
+//    public Optional<Project> getProjectByName(String projectId);
+
+    public Project findByProjectName(String projectName);
 
     // Get projectS by PROGRAM NAME
     public Optional<Project> getProjectsByProgramName(String projectName);
@@ -25,7 +27,7 @@ public interface ProjectService {
     public String addProject(Project project);
 
     // Adding multiple new Projects --> POST Request
-    public String addMultipleProjects(List<Project> projects);
+//    public String addMultipleProjects(List<Project> projects);
 
     // Delete Project
     public String deleteProject(String projectId);
@@ -36,5 +38,5 @@ public interface ProjectService {
     // Partial Update Project --> PATCH
     // Using MAP instead of HashMap for better type safety and flexibility
     // and to preserve types of the values
-    public String partialUpdateProject(String projectId, Map<String, Object> updatedProject);
+//    public String partialUpdateProject(String projectId, Map<String, Object> updatedProject);
 }

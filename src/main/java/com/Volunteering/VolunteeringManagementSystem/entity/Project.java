@@ -25,7 +25,7 @@ public class Project {
 
     private String location;
     private String duration;
-    private List<String> skillsRequired;
+//    private List<String> skillsRequired;
 
     @Enumerated(EnumType.STRING)
     private ProjectStatus projectStatus;
@@ -45,13 +45,13 @@ public class Project {
 
     public Project() {}
 
-    public Project(String projectName, String description, String location, String duration, List<String> skillsRequired, ProjectStatus projectStatus, Set<Volunteer> volunteers) {
+    public Project(String projectName, String description, String location, String duration, ProjectStatus projectStatus, Set<Volunteer> volunteers) {
         this.projectId = generateId();
         this.projectName = projectName;
         this.description = description;
         this.location = location;
         this.duration = duration;
-        this.skillsRequired = skillsRequired;
+//        this.skillsRequired = skillsRequired;
         this.projectStatus = projectStatus;
 //        this.city = city;
 //        this.manager = manager;

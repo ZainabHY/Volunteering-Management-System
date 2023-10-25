@@ -83,7 +83,6 @@ public class VolunteerServiceImpl implements VolunteerService {
             existingVolunteer.setPassword(volunteer.getPassword());
             existingVolunteer.setContactInfo(volunteer.getContactInfo());
             existingVolunteer.setRoleType(volunteer.getRoleType());
-            existingVolunteer.setSkills(volunteer.getSkills());
             existingVolunteer.setAvailability(volunteer.getAvailability());
             existingVolunteer.setAssignedProjects(volunteer.getAssignedProjects());
             existingVolunteer.setVolunteeringHours(volunteer.getVolunteeringHours());
@@ -141,12 +140,6 @@ public class VolunteerServiceImpl implements VolunteerService {
                         }
                         break;
 
-                    case "skills":
-                        if (fieldValue != null) {
-                            existingVolunteer.setSkills((String) fieldValue);
-                        }
-                        break;
-
                     case "availability":
                         if (fieldValue != null) {
                             Availability availability = parseAvailability((String) fieldValue);
@@ -174,6 +167,11 @@ public class VolunteerServiceImpl implements VolunteerService {
         } else {
             return "Sorry, volunteer with Volunteer ID: " + volunteerId + " not found";
         }
+    }
+
+    @Override
+    public boolean registerVolunteer(Volunteer volunteer) {
+        return false;
     }
 
     // Converting the type of availability value

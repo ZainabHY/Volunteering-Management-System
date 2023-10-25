@@ -11,15 +11,15 @@ public interface Employee {
 // METHODS
 
     // Validate credentials to ensure that user is authorized to access the system
-    public void validateCredentials();
+    public boolean validateCredentials();
 
     // Changing the password for the users if they ask for
-    public String changePassword();
+    public boolean changePassword();
 
     // Create an account in the system
-    public void signUp(Role role);
+    public boolean signUp(Role role);
 
     // Login to the system and use its functionalities
-    public void login(String username, String password);
+    public boolean login(String username, String password);
 
 }
