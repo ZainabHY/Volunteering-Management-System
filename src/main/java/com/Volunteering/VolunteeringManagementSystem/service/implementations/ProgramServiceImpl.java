@@ -1,6 +1,7 @@
 package com.Volunteering.VolunteeringManagementSystem.service.implementations;
 
 import com.Volunteering.VolunteeringManagementSystem.entity.*;
+import com.Volunteering.VolunteeringManagementSystem.repository.ManagerRepository;
 import com.Volunteering.VolunteeringManagementSystem.repository.ProgramRepository;
 import com.Volunteering.VolunteeringManagementSystem.service.interfaces.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class ProgramServiceImpl implements ProgramService {
     // 1. Autowired the Repository
     @Autowired
     private ProgramRepository programRepository;
+    @Autowired
+    private ManagerRepository managerRepository;
 
 
     // 2. Create the implementations of the methods in Program Service Interface
@@ -32,21 +35,55 @@ public class ProgramServiceImpl implements ProgramService {
     }
 
     @Override
-    public Program addProgram(Program program) {
-        // Set ID for program
-        program.setProgramId(program.getProgramId());
-        return programRepository.save(program);
+    public Optional<Program> getProgramByName(String programName) {
+        return programRepository.findByProgramName(programName);
     }
 
     @Override
-    public List<Program> addMultiplePrograms(List<Program> programs) {
+    public String addProgram(Program program) {
+        String msg = "";
+        // Set ID for program
+        String programId = program.generateId();
+        program.setProgramId(programId);
+
+        //Save the program with the associated manager
+        // By retrieving the manager id and look if it is exists
+        Manager manager = managerRepository.findByRoleId(program.getManager().getRoleId());
+        if (manager != null)
+        {
+            program.setManager(manager);
+            programRepository.save(program);
+            msg = "Program " + program.getProgramName() + " added successfully!";
+        }
+        else
+            msg = "Sorry, manager with ID " + program.getManager().getRoleId() + " not found";
+
+        return msg;
+    }
+
+    @Override
+    public String addMultiplePrograms(List<Program> programs) {
+        String msg = "";
+
         // Set IDs for programs
         for(Program program: programs)
         {
-            String programId = program.getProgramId();
+            String programId = program.generateId();
             program.setProgramId(programId);
+
+            //Save the program with the associated manager
+            // By retrieving the manager id and look if it is exists
+            Manager manager = managerRepository.findByRoleId(program.getManager().getRoleId());
+            if (manager != null)
+            {
+                program.setManager(manager);
+                programRepository.save(program);
+                msg += "\nProgram " + program.getProgramName() + " added successfully!";
+            }
+            else
+                msg += "\nSorry, manager with ID " + program.getManager().getRoleId() + " not found";
         }
-        return programRepository.saveAll(programs);
+        return msg;
     }
 
     @Override
@@ -129,6 +166,7 @@ public class ProgramServiceImpl implements ProgramService {
 
                     case "manager":
                         if (fieldValue != null) {
+//                            Manager manager = managerRepository.findById(fieldValue);
                             existingProgram.setManager((Manager) fieldValue);
                         }
                         break;

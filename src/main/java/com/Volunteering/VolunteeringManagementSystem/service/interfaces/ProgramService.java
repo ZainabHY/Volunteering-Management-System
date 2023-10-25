@@ -17,12 +17,14 @@ public interface ProgramService {
     // Get program by PROGRAM ID --> Using Query Parameter
     public Optional<Program> getProgramById(String programId);
 
+    // Get program by PROGRAM NAME
+    public Optional<Program> getProgramByName(String programId);
 
     // Adding a new Program --> POST Request
-    public Program addProgram(Program program);
+    public String addProgram(Program program);
 
     // Adding multiple new Programs --> POST Request
-    public List<Program> addMultiplePrograms(List<Program> programs);
+    public String addMultiplePrograms(List<Program> programs);
 
     // Delete Program
     public String deleteProgram(String programId);

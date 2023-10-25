@@ -103,14 +103,14 @@ public class Program {
 //
     // Generating unique ID for the Program
     // which begins with "prog" followed by 4 numbers
-    private String generateId() {
+    public String generateId() {
         int uniqueNumber = getUniqueNumber(); // Retrieve a unique number based on the current timestamp
 
         return "prog" + String.format("%04d", uniqueNumber);
     }
 
     // This method generates a unique number based on the current timestamp
-    private int getUniqueNumber() {
+    public int getUniqueNumber() {
         long timestamp = System.currentTimeMillis();
         return (int) (timestamp % 10000);
     }
