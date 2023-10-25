@@ -169,10 +169,6 @@ public class VolunteerServiceImpl implements VolunteerService {
         }
     }
 
-    @Override
-    public boolean registerVolunteer(Volunteer volunteer) {
-        return false;
-    }
 
     // Converting the type of availability value
     private Availability parseAvailability(String availabilityValue) {

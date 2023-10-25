@@ -1,7 +1,9 @@
 package com.Volunteering.VolunteeringManagementSystem.entity;
 
+import com.Volunteering.VolunteeringManagementSystem.repository.VolunteerRepository;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.List;
@@ -36,6 +38,43 @@ public class Volunteer extends Role{
         this.availability = availability;
         this.assignedProjects = assignedProjects;
         this.volunteeringHours = volunteeringHours;
+    }
+
+    @Autowired
+    VolunteerRepository volunteerRepository;
+
+    public boolean signUp(Role role) {
+        try
+        {
+            volunteerRepository.save(this); // this refer to the current instance
+            System.out.println("Volunteer Registration: " + getUsername());
+            return true;
+        }
+        catch (Exception e)
+        {
+            System.err.println("Volunteer Registration Failed" + e.getMessage());
+            return false;
+        }
+    }
+
+    // Login method for Manager --> With error handling (try-catch)
+    @Override
+    public boolean login(String username, String password) {
+        try
+        {
+            if(getUsername().equals(username) && getPassword().equals(password))
+            {
+                System.out.println("Volunteer login successfully!");
+                return true;
+            }
+            System.out.println("Volunteer login failed, username or password is incorrect");
+            return false;
+        }
+        catch (Exception e)
+        {
+            System.err.println("Volunteer login failed" + e.getMessage());
+            return false;
+        }
     }
 
     // METHODS

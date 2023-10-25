@@ -51,9 +51,18 @@ public class VolunteerController {
 
     // Adding a new Volunteer --> POST Request
     @PostMapping("/addVolunteer")
-    public Volunteer addVolunteer(@RequestBody Volunteer volunteer)
+    public ResponseEntity<String> addVolunteer(@RequestBody Volunteer volunteer)
     {
-        return volunteerService.addVolunteer(volunteer);
+        try{
+            volunteerService.addVolunteer(volunteer);
+            String msg = "Provided volunteer added successfully";
+            return ResponseEntity.status(HttpStatus.OK).body(msg);
+        }
+        catch (Exception e)
+        {
+            String errMsg = "Volunteer provided not added \n\n" + e.getMessage();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errMsg);
+        }
     }
 
     // Adding multiple new Volunteers --> POST Request

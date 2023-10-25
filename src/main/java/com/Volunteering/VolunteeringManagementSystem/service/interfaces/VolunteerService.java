@@ -21,6 +21,7 @@ public interface VolunteerService {
     public Optional<Volunteer> getVolunteerByAvailability(String availability);
 
     // Adding a new Volunteer --> POST Request
+    // as Sign Up (Registration)
     public Volunteer addVolunteer(Volunteer volunteer);
 
     // Adding multiple new Volunteers --> POST Request
@@ -38,6 +39,6 @@ public interface VolunteerService {
     public String partialUpdateVolunteer(String volunteerId, Map<String, Object> updatedVolunteer);
 
 
-    // as Sign Up
-    public boolean registerVolunteer(Volunteer volunteer);
+
+
 }

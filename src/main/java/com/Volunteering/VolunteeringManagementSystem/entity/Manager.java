@@ -1,9 +1,11 @@
 package com.Volunteering.VolunteeringManagementSystem.entity;
 
+import com.Volunteering.VolunteeringManagementSystem.repository.ManagerRepository;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +34,14 @@ public class Manager extends Role{
         super(roleName, username, password, contactInfo);
     }
 
+    @Autowired
+    ManagerRepository managerRepository;
+
     @Override
     public boolean signUp(Role role) {
         try
         {
+            managerRepository.save(this); // this refer to the current instance
             System.out.println("Manager Registration: " + getUsername());
             return true;
         }
@@ -56,7 +62,7 @@ public class Manager extends Role{
                 System.out.println("Manager login successfully!");
                 return true;
             }
-            System.out.println("Manager login failed");
+            System.out.println("Manager login failed, username or password is incorrect");
             return false;
         }
         catch (Exception e)
