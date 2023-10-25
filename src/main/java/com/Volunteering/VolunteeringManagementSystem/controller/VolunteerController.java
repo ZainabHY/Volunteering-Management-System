@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -68,7 +69,7 @@ public class VolunteerController {
     // --> Just updating the needed properties
     @PatchMapping("/partialUpdateVolunteer/{volunteerId}")
     @ResponseStatus(value = HttpStatus.OK)
-    public String  partialUpdateVolunteer(@PathVariable String volunteerId, @RequestBody HashMap<String, Object> updatedVolunteer)
+    public String  partialUpdateVolunteer(@PathVariable String volunteerId, @RequestBody Map<String, Object> updatedVolunteer)
     {
         return volunteerService.partialUpdateVolunteer(volunteerId, updatedVolunteer);
     }

@@ -153,6 +153,7 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     ////////
 
+
     @Override
     public String partialUpdateVolunteer(String volunteerId, Map<String, Object> updatedVolunteer) {
         Optional<Volunteer> foundVolunteer = volunteerRepository.findById(volunteerId);
@@ -205,7 +206,8 @@ public class VolunteerServiceImpl implements VolunteerService {
 
                     case "availability":
                         if (fieldValue != null) {
-                            existingVolunteer.setAvailability((Availability) fieldValue);
+                            Availability availability = parseAvailability((String) fieldValue);
+                            existingVolunteer.setAvailability(availability);
                         }
                         break;
 
@@ -230,4 +232,15 @@ public class VolunteerServiceImpl implements VolunteerService {
             return "Sorry, volunteer with Volunteer ID: " + volunteerId + " not found";
         }
     }
+
+    // Converting the type of availability value
+    private Availability parseAvailability(String availabilityValue) {
+        try {
+            return Availability.valueOf(availabilityValue);
+        } catch (IllegalArgumentException e) {
+            // Handle if the provided availabilityValue is not a valid enum constant
+            throw new IllegalArgumentException("Invalid availability value: " + availabilityValue);
+        }
+    }
+
 }
