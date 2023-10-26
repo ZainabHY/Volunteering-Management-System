@@ -1,6 +1,7 @@
 package com.Volunteering.VolunteeringManagementSystem.service.implementations;
 
 import com.Volunteering.VolunteeringManagementSystem.entity.*;
+import com.Volunteering.VolunteeringManagementSystem.repository.ProjectRepository;
 import com.Volunteering.VolunteeringManagementSystem.repository.VolunteerRepository;
 import com.Volunteering.VolunteeringManagementSystem.service.interfaces.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Autowired
     private VolunteerRepository volunteerRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     @Override
     public List<Volunteer> getAllVolunteers() {
@@ -37,6 +41,22 @@ public class VolunteerServiceImpl implements VolunteerService {
     public Volunteer addVolunteer(Volunteer volunteer) {
         // Set ID for volunteer
         volunteer.setRoleId(volunteer.customIdGenerator(volunteer));
+
+        // Ensure that the assignedProjects are properly associated
+        Set<Project> assignedProjects = volunteer.getAssignedProjects();
+        if (assignedProjects != null) {
+            for (Project project : assignedProjects) {
+                Optional<Project> existingProject = projectRepository.findById(project.getProjectId());
+
+                // If the project exists, associate it with the volunteer
+                if (existingProject.isPresent()) {
+                    project = existingProject.get();
+                }
+
+                // Set the volunteer for the project
+                project.getVolunteers().add(volunteer);
+            }
+        }
         return volunteerRepository.save(volunteer);
     }
 

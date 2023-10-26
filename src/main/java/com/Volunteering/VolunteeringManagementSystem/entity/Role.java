@@ -59,8 +59,8 @@ public abstract class Role implements Employee{
 
 
 
-    public abstract boolean signUp(Role role);
-    public abstract boolean login(String username, String password);
+//    public abstract boolean signUp(Role role);
+//    public abstract boolean login(String username, String password);
 
     //////////
 
@@ -86,7 +86,7 @@ public abstract class Role implements Employee{
         return (int) (timestamp % 10000);
     }
 
-    public abstract boolean validateCredentials(String username, String password);
-
-    public abstract boolean changePassword(String currentPassword, String newPassword);
+//    public abstract boolean validateCredentials(String username, String password);
+//
+//    public abstract boolean changePassword(String currentPassword, String newPassword);
 }
