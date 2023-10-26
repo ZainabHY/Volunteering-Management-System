@@ -6,8 +6,6 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 @Entity
@@ -73,6 +71,41 @@ public class Volunteer extends Role{
         catch (Exception e)
         {
             System.err.println("Volunteer login failed" + e.getMessage());
+            return false;
+        }
+    }
+
+    //Validating credentials for volunteer
+    @Override
+    public boolean validateCredentials(String username, String password) {
+        try {
+            // Check if the username and password are equal to the ones saved in DB
+            if (getUsername().equals(username) && getPassword().equals(password)) {
+                System.out.println("Volunteer credentials are valid");
+                return true;
+            }
+            System.out.println("Volunteer credentials are invalid");
+            return false;
+        } catch (Exception e) {
+            System.err.println("Volunteer credentials validation failed Due: " + e.getMessage());
+            return false;
+        }
+    }
+
+    //Changing password for volunteer
+    @Override
+    public boolean changePassword(String currentPassword, String newPassword) {
+        try {
+            // Check if the password are equal to the one saved in DB
+            if (getPassword().equals(currentPassword)) {
+                setPassword(newPassword);
+                System.out.println("Volunteer password changed successfully.");
+                return true;
+            }
+            System.out.println("Volunteer password change failed. Current password is incorrect");
+            return false;
+        } catch (Exception e) {
+            System.err.println("Volunteer password change failed Due: " + e.getMessage());
             return false;
         }
     }

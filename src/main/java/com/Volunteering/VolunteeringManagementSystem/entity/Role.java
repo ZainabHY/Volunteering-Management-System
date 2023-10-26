@@ -84,4 +84,8 @@ public abstract class Role implements Employee{
         long timestamp = System.currentTimeMillis();
         return (int) (timestamp % 10000);
     }
+
+    public abstract boolean validateCredentials(String username, String password);
+
+    public abstract boolean changePassword(String currentPassword, String newPassword);
 }
