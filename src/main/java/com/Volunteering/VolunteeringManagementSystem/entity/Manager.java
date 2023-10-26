@@ -34,6 +34,7 @@ public class Manager extends Role{
         super(roleName, username, password, contactInfo);
     }
 
+
     @Autowired
     ManagerRepository managerRepository;
 
@@ -72,14 +73,40 @@ public class Manager extends Role{
         }
     }
 
+
+    //Validating credentials for manager
     @Override
-    public boolean validateCredentials() {
-        return false;
+    public boolean validateCredentials(String username, String password) {
+        try {
+            // Check if the username and password are equal to the ones saved in DB
+            if (getUsername().equals(username) && getPassword().equals(password)) {
+                System.out.println("Manager credentials are valid");
+                return true;
+            }
+            System.out.println("Manager credentials are invalid");
+            return false;
+        } catch (Exception e) {
+            System.err.println("Manager credentials validation failed Due: " + e.getMessage());
+            return false;
+        }
     }
 
+    //Changing password for manager
     @Override
-    public boolean changePassword() {
-        return false;
+    public boolean changePassword(String currentPassword, String newPassword) {
+        try {
+            // Check if the password are equal to the one saved in DB
+            if (getPassword().equals(currentPassword)) {
+                setPassword(newPassword);
+                System.out.println("Manager password changed successfully.");
+                return true;
+            }
+            System.out.println("Manager password change failed. Current password is incorrect");
+            return false;
+        } catch (Exception e) {
+            System.err.println("Manager password change failed Due: " + e.getMessage());
+            return false;
+        }
     }
 
 
