@@ -14,7 +14,7 @@ Simplifies administration and enhances effectiveness of volunteer programs
 !["Volunteering MS UML Class Diagram"]('Volunteering Management System.png')
 ![Uploading Volunteering Management System.png…]()
 
-![alt text](https://ibb.co/hRx25VB) 
+![alt text](https://github.com/ZainabHY/Volunteering-Management-System/blob/main/Volunteering%20Management%20System.png) 
 
 **Setup**
 
