@@ -23,7 +23,7 @@ Simplifies administration and enhances effectiveness of volunteer programs
    * Lombok
 * Clone repository
    * **In Terminal:**
-     git clone 
+     git clone https://github.com/ZainabHY/Volunteering-Management-System.git
 
 ## Technologies Used
 
