@@ -1,5 +1,4 @@
 # The Structure of the Volunteering Management System
-* **UML class diagram**
 
 
 
@@ -11,6 +10,7 @@ Simplifies administration and enhances effectiveness of volunteer programs
 
 **Class Diagram**
 ![alt text](https://github.com/ZainabHY/Volunteering-Management-System/blob/main/Volunteering%20Management%20System.png) 
+
 
 **Setup**
 * Installing Java
@@ -30,7 +30,23 @@ Simplifies administration and enhances effectiveness of volunteer programs
    * Postman
 
 ## Controllers and Routes structure
-
+   * **Managers**
+     * Managers Home (**GET**)
+     * Get All Managers (**GET**)
+     * Add Manager (**POST**)
+     * Delete Manager (**DELETE**)
+     * Update Manager (**PUT**)
+       
+   * **Volunteers**
+     * Managers Home (**GET**)
+     * Get All Managers (**GET**)
+     * Add Manager (**POST**)
+     * Delete Manager (**DELETE**)
+     * Update Manager (**PUT**)
+    
+   * **Programs**
+     
+   * **Projects**
 
 ## Extra links
    **Volunteering Management System Presentation:**
