@@ -26,9 +26,11 @@ Simplifies administration and enhances effectiveness of volunteer programs
      git clone https://github.com/ZainabHY/Volunteering-Management-System.git
 
 ## Technologies Used
+   * IntelliJ
+   * Postman
 
+## Controllers and Routes structure
 
-##Controllers and Routes structure
 
 ## Extra links
    **Volunteering Management System Presentation:**
