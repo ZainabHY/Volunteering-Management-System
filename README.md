@@ -1,8 +1,42 @@
 # The Structure of the Volunteering Management System
 * **UML class diagram**
 
+
+
+**Description of the project**
+A streamlined system for managing volunteers and projects within programs
+**Roles:** Managers oversee projects, while Volunteers actively participate 
+   Programs group projects, enabling efficient organization and coordination
+Simplifies administration and enhances effectiveness of volunteer programs
+
+
+**Class Diagram**
 !["Volunteering MS UML Class Diagram"]('Volunteering Management System.png')
 ![Uploading Volunteering Management System.png…]()
+
+![alt text](https://ibb.co/hRx25VB) 
+
+**Setup**
+
+**Technologies Used**
+
+**Controllers and Routes structure**
+
+**Extra links**
+   **Volunteering Management System Presentation:**
+   https://docs.google.com/presentation/d/1EOxj1KYtBlxg51Q9ASDxpcCG-WVED83NNQhm80lb_xk/edit?usp=sharing
+   **Trello Managemnt**
+   https://trello.com/b/LdRbBB7a/mid-project-volunteering-system
+
+**Future Work**
+
+
+**Resources**
+
+
+
+
+
 
 **Steps for Service and Controller Layers**
 
