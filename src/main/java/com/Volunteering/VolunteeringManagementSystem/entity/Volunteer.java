@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,12 +26,12 @@ public class Volunteer extends Role{
             joinColumns = @JoinColumn(name = "volunteer_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id")
     )
-    private Set<Project> assignedProjects = new HashSet<>();
+    private List<Project> assignedProjects = new ArrayList<>();
 
     private int volunteeringHours;
 
     public Volunteer(){}
-    public Volunteer(String roleName, String username, String password, ContactInfo contactInfo, Availability availability, Set<Project> assignedProjects, int volunteeringHours) {
+    public Volunteer(String roleName, String username, String password, ContactInfo contactInfo, Availability availability, List<Project> assignedProjects, int volunteeringHours) {
         super(roleName, username, password, contactInfo);
 
 //        this.skills = skills;

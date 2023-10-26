@@ -41,11 +41,11 @@ public class Project {
 
     // Relationship
     @ManyToMany(mappedBy = "assignedProjects")
-    private Set<Volunteer> volunteers = new HashSet<>();
+    private List<Volunteer> volunteers = new ArrayList<>();
 
     public Project() {}
 
-    public Project(String projectName, String description, String location, String duration, ProjectStatus projectStatus, Set<Volunteer> volunteers) {
+    public Project(String projectName, String description, String location, String duration, ProjectStatus projectStatus, List<Volunteer> volunteers) {
         this.projectId = generateId();
         this.projectName = projectName;
         this.description = description;

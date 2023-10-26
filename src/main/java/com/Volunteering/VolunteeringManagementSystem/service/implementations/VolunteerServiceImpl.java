@@ -43,7 +43,7 @@ public class VolunteerServiceImpl implements VolunteerService {
         volunteer.setRoleId(volunteer.customIdGenerator(volunteer));
 
         // Ensure that the assignedProjects are properly associated
-        Set<Project> assignedProjects = volunteer.getAssignedProjects();
+        List<Project> assignedProjects = volunteer.getAssignedProjects();
         if (assignedProjects != null) {
             for (Project project : assignedProjects) {
                 Optional<Project> existingProject = projectRepository.findById(project.getProjectId());
@@ -169,7 +169,20 @@ public class VolunteerServiceImpl implements VolunteerService {
 
                     case "assignedProjects":
                         if (fieldValue != null) {
-                            existingVolunteer.setAssignedProjects((Set<Project>) fieldValue);
+//                            existingVolunteer.setAssignedProjects((Set<Project>) fieldValue);
+
+                            List<String> projectIds = (List<String>) fieldValue;
+                            // Iterate through the updated projects and associate them with the volunteer
+                            List<Project> updatedProjects = new ArrayList<>();
+
+                            for (String projectId : projectIds) {
+                                Optional<Project> existingProject = projectRepository.findById(projectId);
+                                if (existingProject.isPresent()) {
+                                    updatedProjects.add(existingProject.get());
+                                }
+                            }
+
+                            existingVolunteer.setAssignedProjects(updatedProjects);
                         }
                         break;
 
@@ -178,6 +191,8 @@ public class VolunteerServiceImpl implements VolunteerService {
                             existingVolunteer.setVolunteeringHours((int) fieldValue);
                         }
                         break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + fieldName);
                 }
             }
 
