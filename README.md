@@ -9,29 +9,41 @@ A streamlined system for managing volunteers and projects within programs
    Programs group projects, enabling efficient organization and coordination
 Simplifies administration and enhances effectiveness of volunteer programs
 
-
 **Class Diagram**
-!["Volunteering MS UML Class Diagram"]('Volunteering Management System.png')
-![Uploading Volunteering Management System.png…]()
-
 ![alt text](https://github.com/ZainabHY/Volunteering-Management-System/blob/main/Volunteering%20Management%20System.png) 
 
 **Setup**
+* Installing Java
+* Installiing Spring Boot
+* Adding dependencies
+   * Spring Web
+   * Spring Boot DevTools
+   * Spring Data JPA
+   * MySQL Driver
+   * Lombok
+* Clone repository
+   * **In Terminal:**
+     git clone 
 
-**Technologies Used**
+## Technologies Used
 
-**Controllers and Routes structure**
 
-**Extra links**
+##Controllers and Routes structure
+
+## Extra links
    **Volunteering Management System Presentation:**
    https://docs.google.com/presentation/d/1EOxj1KYtBlxg51Q9ASDxpcCG-WVED83NNQhm80lb_xk/edit?usp=sharing
    **Trello Managemnt**
    https://trello.com/b/LdRbBB7a/mid-project-volunteering-system
 
-**Future Work**
+## Future Work
+   * Adding tests
+   * Creating security
 
+## Resources 
+   * https://github.com/raneemr05/springdatajpa
+   * https://stackoverflow.com/
 
-**Resources**
 
 
 
