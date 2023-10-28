@@ -1,7 +1,72 @@
 # The Structure of the Volunteering Management System
-* **UML class diagram**
 
-!["Volunteering MS UML Class Diagram"]('Volunteering Management System.png')
+
+
+**Description of the project**
+A streamlined system for managing volunteers and projects within programs
+**Roles:** Managers oversee projects, while Volunteers actively participate 
+   Programs group projects, enabling efficient organization and coordination
+Simplifies administration and enhances effectiveness of volunteer programs
+
+**Class Diagram**
+![alt text](https://github.com/ZainabHY/Volunteering-Management-System/blob/main/Volunteering%20Management%20System.png) 
+
+
+**Setup**
+* Installing Java
+* Installiing Spring Boot
+* Adding dependencies
+   * Spring Web
+   * Spring Boot DevTools
+   * Spring Data JPA
+   * MySQL Driver
+   * Lombok
+* Clone repository
+   * **In Terminal:**
+     git clone https://github.com/ZainabHY/Volunteering-Management-System.git
+
+## Technologies Used
+   * IntelliJ
+   * Postman
+
+## Controllers and Routes structure
+   * **Managers**
+     * Managers Home (**GET**)
+     * Get All Managers (**GET**)
+     * Add Manager (**POST**)
+     * Delete Manager (**DELETE**)
+     * Update Manager (**PUT**)
+       
+   * **Volunteers**
+     * Managers Home (**GET**)
+     * Get All Managers (**GET**)
+     * Add Manager (**POST**)
+     * Delete Manager (**DELETE**)
+     * Update Manager (**PUT**)
+    
+   * **Programs**
+     
+   * **Projects**
+
+## Extra links
+   **Volunteering Management System Presentation:**
+   https://docs.google.com/presentation/d/1EOxj1KYtBlxg51Q9ASDxpcCG-WVED83NNQhm80lb_xk/edit?usp=sharing
+   **Trello Managemnt**
+   https://trello.com/b/LdRbBB7a/mid-project-volunteering-system
+
+## Future Work
+   * Adding tests
+   * Creating security
+
+## Resources 
+   * https://github.com/raneemr05/springdatajpa
+   * https://stackoverflow.com/
+
+
+
+
+
+
 
 **Steps for Service and Controller Layers**
 
