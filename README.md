@@ -66,9 +66,9 @@ Simplifies administration and enhances effectiveness of volunteer programs
      * Delete Projects (**DELETE**) --> localhost:8080/projects/addProject/{projectId}
 
 ## Extra links
-   **Volunteering Management System Presentation:**
+   * **Volunteering Management System Presentation:**
    https://docs.google.com/presentation/d/1EOxj1KYtBlxg51Q9ASDxpcCG-WVED83NNQhm80lb_xk/edit?usp=sharing
-   **Trello Managemnt**
+   * **Trello Managemnt**
    https://trello.com/b/LdRbBB7a/mid-project-volunteering-system
 
 ## Future Work
