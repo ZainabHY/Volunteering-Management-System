@@ -31,22 +31,39 @@ Simplifies administration and enhances effectiveness of volunteer programs
 
 ## Controllers and Routes structure
    * **Managers**
-     * Managers Home (**GET**)
-     * Get All Managers (**GET**)
-     * Add Manager (**POST**)
-     * Delete Manager (**DELETE**)
-     * Update Manager (**PUT**)
+     * Managers Home (**GET**) --> localhost:8080/managers/
+     * Get All Managers (**GET**) --> localhost:8080/managers/getAllManagers
+     * Add Manager (**POST**) --> localhost:8080/managers/addManager
+     * Delete Manager (**DELETE**) --> localhost:8080/managers/deleteManager/{managerId}
+     * Update Manager (**PUT**) --> localhost:8080/managers/updateManager/{managerId}
        
    * **Volunteers**
-     * Managers Home (**GET**)
-     * Get All Managers (**GET**)
-     * Add Manager (**POST**)
-     * Delete Manager (**DELETE**)
-     * Update Manager (**PUT**)
+     * Volunteers Home (**GET**) --> localhost:8080/volunteers/
+     * Get All Volunteers (**GET**) --> localhost:8080/volunteers/getAllVolunteers
+     * Get Volunteer By ID (**GET**) --> localhost:8080/volunteers/getVolunteerById/{volunteerId}
+     * Get Volunteer By Availability (**GET**) --> localhost:8080/volunteers/getVolunteerById/{availability}
+     * Add Volunteer (**POST**) --> localhost:8080/volunteers/addVolunteer
+     * Add Multiple Volunteers (**POST**) --> localhost:8080/volunteers/addMultipleVolunteers
+     * Delete Volunteer (**DELETE**) --> localhost:8080/volunteers/deleteVolunteer/{volunteerId}
+     * Update Volunteer (**PUT**) --> localhost:8080/volunteers/updateVolunteer/{volunteerId}
+     * Update Volunteer (**PATCH**) --> localhost:8080/volunteers/partialUpdateVolunteer/{volunteerId}
     
    * **Programs**
+     * Programs Home (**GET**) --> localhost:8080/programs/
+     * Get All Programs (**GET**) --> localhost:8080/programs/getAllPrograms
+     * Get Program By ID (**GET**) --> localhost:8080/programs/getProgramById/{programId}
+     * Get Program By Name (**GET**) --> localhost:8080/programs/getProgramByName/{programName}
+     * Add Program (**POST**) --> localhost:8080/programs/addProgram
+     * Add Multiple Programs (**POST**)--> localhost:8080/programs/addMultiplePrograms
+     * Delete Program (**DELETE**) --> localhost:8080/programs/deleteProgram/{programId}
+     * Update Program (**PUT**)--> localhost:8080/programs/updatePrograms/{programId}
      
    * **Projects**
+     * Projects Home (**GET**) --> localhost:8080/projects/
+     * Get Project By Name (**GET**) --> localhost:8080/projects/findByProjectName/{projectName}"
+     * Get All Projects (**GET**) --> localhost:8080/projects/getAllProjects
+     * Add Projects (**POST**) --> localhost:8080/projects/getProjectById/{projectId}
+     * Delete Projects (**DELETE**) --> localhost:8080/projects/addProject/{projectId}
 
 ## Extra links
    **Volunteering Management System Presentation:**
