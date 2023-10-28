@@ -19,8 +19,8 @@ public interface Employee {
 
     // Create an account in the system
 //    public boolean signUp(Role role);
-
-    // Login to the system and use its functionalities
+//
+//    // Login to the system and use its functionalities
 //    public boolean login(String username, String password);
 
 }

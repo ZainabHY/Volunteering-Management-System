@@ -5,6 +5,8 @@ import lombok.Data;
 import org.hibernate.HibernateException;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashMap;
+
 @Entity
 @Table(name = "tbl_role")
 @Data
@@ -58,15 +60,36 @@ public abstract class Role implements Employee{
 //    public abstract boolean changePassword(String currentPassword, String newPassword);
 
 
+//    private Map<String, User> users; // In-memory storage for user data
+//
+//    public UserService() {
+//        users = new HashMap<>();
+//    }
+//
+//    public void signUp(String roleName, String username, String password, String email, String phoneNumber) {
+//        // Check if the username is already taken
+//        if (users.containsKey(username)) {
+//            throw new IllegalArgumentException("Username already exists. Please choose a different username.");
+//        }
+//
+//        // Create a new User object with the provided information
+//        ContactInfo contactInfo = new ContactInfo(email, phoneNumber);
+//        User newUser = new User(roleName, username, password, contactInfo);
+//
+//        // Store the User object in the users map with the username as the key
+//        users.put(username, newUser);
+//        System.out.println("User signed up successfully.");
+//    }
 
-    public boolean signUp(Role role)
-    {
 
-    }
-    public boolean login(String username, String password)
-    {
-
-    }
+//    public boolean signUp(Role role)
+//    {
+//
+//    }
+//    public boolean login(String username, String password)
+//    {
+//
+//    }
 
     //////////
 
