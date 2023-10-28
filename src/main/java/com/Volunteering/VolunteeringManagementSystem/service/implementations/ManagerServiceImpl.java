@@ -1,6 +1,7 @@
 package com.Volunteering.VolunteeringManagementSystem.service.implementations;
 
 import com.Volunteering.VolunteeringManagementSystem.entity.Manager;
+import com.Volunteering.VolunteeringManagementSystem.entity.Volunteer;
 import com.Volunteering.VolunteeringManagementSystem.repository.ManagerRepository;
 import com.Volunteering.VolunteeringManagementSystem.service.interfaces.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,10 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public Manager addManager(Manager manager) {
+    public String addManager(Manager manager) {
         manager.setRoleId(manager.customIdGenerator(manager));
-        return managerRepository.save(manager);
+        managerRepository.save(manager);
+        return "Manager " + manager.getRoleName() + " is added successfully";
     }
 
     @Override
@@ -62,16 +64,19 @@ public class ManagerServiceImpl implements ManagerService {
         // 1. Checking if manager with ID managerId is present int the DB
         if(foundManager.isPresent())
         {
-            // 2. Setting the NEW values
-            manager.setRoleName(manager.getRoleName());
-            manager.setUsername(manager.getUsername());
-            manager.setPassword(manager.getPassword());
-            manager.setContactInfo(manager.getContactInfo());
-            manager.setRoleType(manager.getRoleType());
-            manager.setSupervisedPrograms(manager.getSupervisedPrograms());
+            // 2. Getting the found manager to update it to the same ID
+            Manager existingManager= foundManager.get();
 
-            // 3. Save them in DB
-            managerRepository.save(manager);
+            // 3. Setting the NEW values
+            existingManager.setRoleName(manager.getRoleName());
+            existingManager.setUsername(manager.getUsername());
+            existingManager.setPassword(manager.getPassword());
+            existingManager.setContactInfo(manager.getContactInfo());
+            existingManager.setRoleType(manager.getRoleType());
+            existingManager.setSupervisedPrograms(manager.getSupervisedPrograms());
+
+            // 4. Save them in DB
+            managerRepository.save(existingManager);
             return "Manager with ID: " + managerId + " updated successfully";
         }
         else

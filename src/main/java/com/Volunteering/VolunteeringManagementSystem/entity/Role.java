@@ -59,8 +59,14 @@ public abstract class Role implements Employee{
 
 
 
-//    public abstract boolean signUp(Role role);
-//    public abstract boolean login(String username, String password);
+    public boolean signUp(Role role)
+    {
+
+    }
+    public boolean login(String username, String password)
+    {
+
+    }
 
     //////////
 

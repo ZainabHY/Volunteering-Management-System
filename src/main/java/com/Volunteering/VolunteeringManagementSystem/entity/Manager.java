@@ -25,9 +25,6 @@ public class Manager extends Role{
     @OneToMany(mappedBy = "manager",fetch = FetchType.EAGER)
     private Set<Program> supervisedPrograms;
 
-//    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Program> supervisedPrograms;
-
     public Manager(){}
 
     public Manager(String roleName, String username, String password, ContactInfo contactInfo) {

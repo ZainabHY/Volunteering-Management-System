@@ -45,6 +45,17 @@ public class Project {
 
     public Project() {}
 
+    // Constructor without volunteers
+    public Project(String projectName, String description, String location, String duration, ProjectStatus projectStatus) {
+        this.projectId = generateId();
+        this.projectName = projectName;
+        this.description = description;
+        this.location = location;
+        this.duration = duration;
+        this.projectStatus = projectStatus;
+    }
+
+    // Constructor with all attributes
     public Project(String projectName, String description, String location, String duration, ProjectStatus projectStatus, List<Volunteer> volunteers) {
         this.projectId = generateId();
         this.projectName = projectName;
@@ -57,6 +68,7 @@ public class Project {
 //        this.manager = manager;
         this.volunteers = volunteers;
     }
+
 
 
 // METHODS

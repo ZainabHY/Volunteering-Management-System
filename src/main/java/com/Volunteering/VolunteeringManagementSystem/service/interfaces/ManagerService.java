@@ -17,7 +17,7 @@ public interface ManagerService {
 //    public Optional<Manager> getCourseByCourseQueryParam(String courseCode);
 
     // Adding a new Manager --> POST Request
-    public Manager addManager(Manager manager);
+    public String addManager(Manager manager);
 
     // Adding multiple new Managers --> POST Request
     public List<Manager> addMultipleManagers(List<Manager> manager);

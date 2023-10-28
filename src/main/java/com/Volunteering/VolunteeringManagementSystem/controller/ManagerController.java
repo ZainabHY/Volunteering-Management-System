@@ -41,7 +41,7 @@ public class ManagerController {
 
     // Adding a new Manager --> POST Request
     @PostMapping("/addManager")
-    public Manager addManager(@RequestBody Manager manager)
+    public String addManager(@RequestBody Manager manager)
     {
         return managerService.addManager(manager);
     }

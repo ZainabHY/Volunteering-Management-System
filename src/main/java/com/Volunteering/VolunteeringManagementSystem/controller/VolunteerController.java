@@ -1,13 +1,16 @@
 package com.Volunteering.VolunteeringManagementSystem.controller;
 
+import com.Volunteering.VolunteeringManagementSystem.CustomResponse;
 import com.Volunteering.VolunteeringManagementSystem.entity.Volunteer;
 import com.Volunteering.VolunteeringManagementSystem.service.implementations.VolunteerServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -19,6 +22,8 @@ public class VolunteerController {
     @Autowired
     private VolunteerServiceImpl volunteerService;
 
+    private static final Logger logger = LoggerFactory.getLogger(VolunteerController.class);
+
     // 2. Create Request Methods (GET, POST, DELETE, PUT, PATCH)
 
     @GetMapping("/")
@@ -28,9 +33,29 @@ public class VolunteerController {
     }
 
     // Get all volunteers --> GET Request
+//    @GetMapping("/getAllVolunteers")
+//    public List<Volunteer> getAllVolunteers(){
+////        logger.info("Received GET request for all volunteers.");
+//        return volunteerService.getAllVolunteers();
+//    }
+
     @GetMapping("/getAllVolunteers")
-    public List<Volunteer> getAllVolunteers(){
-        return volunteerService.getAllVolunteers();
+    public ResponseEntity<CustomResponse> getAllVolunteers(){
+
+        try{
+            List<Volunteer> volunteers = volunteerService.getAllVolunteers();
+            String msg = "\n--- These are all volunteers ---";
+
+            CustomResponse response = new CustomResponse(msg, volunteers);
+            return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(response);
+        }
+        catch (Exception e)
+        {
+            String errmsg = "--- Sorry, there is no volunteers data ---\n\n";
+            CustomResponse response = new CustomResponse(errmsg, null);
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).body(response);
+        }
     }
 
 
@@ -55,12 +80,12 @@ public class VolunteerController {
     {
         try{
             volunteerService.addVolunteer(volunteer);
-            String msg = "Provided volunteer added successfully";
+            String msg = "Provided volunteer: " + volunteer.getRoleName() + " is added successfully";
             return ResponseEntity.status(HttpStatus.OK).body(msg);
         }
         catch (Exception e)
         {
-            String errMsg = "Volunteer provided not added \n\n" + e.getMessage();
+            String errMsg = "Provided volunteer : " + volunteer.getRoleName() + " is not added \n\n" + e.getMessage();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errMsg);
         }
     }

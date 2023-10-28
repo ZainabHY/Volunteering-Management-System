@@ -95,9 +95,10 @@ public class VolunteerServiceImpl implements VolunteerService {
 
         // 1. Checking if volunteer with ID volunteerId is present in DB
         if (foundVolunteer.isPresent()) {
+            // 2. Getting the found volunteer to update it to the same ID
             Volunteer existingVolunteer = foundVolunteer.get();
 
-            // 2. Set the new values
+            // 3. Set the new values
             existingVolunteer.setRoleName(volunteer.getRoleName());
             existingVolunteer.setUsername(volunteer.getUsername());
             existingVolunteer.setPassword(volunteer.getPassword());
@@ -107,7 +108,7 @@ public class VolunteerServiceImpl implements VolunteerService {
             existingVolunteer.setAssignedProjects(volunteer.getAssignedProjects());
             existingVolunteer.setVolunteeringHours(volunteer.getVolunteeringHours());
 
-            // 3. Save the updated volunteer to the database
+            // 4. Save the updated volunteer to the database
             volunteerRepository.save(existingVolunteer);
             return "Volunteer with Volunteer ID: " + volunteerId + " updated successfully";
         } else {
