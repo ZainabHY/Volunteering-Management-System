@@ -4,12 +4,21 @@ import com.Volunteering.VolunteeringManagementSystem.entity.Manager;
 import com.Volunteering.VolunteeringManagementSystem.entity.Volunteer;
 import com.Volunteering.VolunteeringManagementSystem.repository.ManagerRepository;
 import com.Volunteering.VolunteeringManagementSystem.service.interfaces.ManagerService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static org.apache.catalina.realm.UserDatabaseRealm.getRoles;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -82,6 +91,31 @@ public class ManagerServiceImpl implements ManagerService {
         else
             return "Sorry, manager with ID: " + managerId + " not found";
     }
+
+    ////////////////////////////////////////////////////////////////
+    // FOR Configure Authentication
+    ////////////////////////////////////////////////////////////////
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Manager manager = managerRepository.findByUsername(username);
+//        if (manager == null) {
+//            throw new UsernameNotFoundException("Manager not found with username: " + username);
+//        }
+//        return new org.springframework.security.core.userdetails.User(
+//                manager.getUsername(), manager.getPassword(), getRoles((User) manager)
+//        );
+//    }
+
+//    private List<GrantedAuthority> getRoles(Manager manager) {
+//        // Return the list of roles for the manager
+//        // Convert your role entities to GrantedAuthority objects
+//        // For example:
+//        return manager.getRoles().stream()
+//                .map(role -> new SimpleGrantedAuthority(role.getName()))
+//                .collect(Collectors.toList());
+//    }
+
 
 
 }

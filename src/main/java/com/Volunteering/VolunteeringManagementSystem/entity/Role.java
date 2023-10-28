@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.HibernateException;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_role")
@@ -113,6 +117,13 @@ public abstract class Role implements Employee{
     private int getUniqueNumber() {
         long timestamp = System.currentTimeMillis();
         return (int) (timestamp % 10000);
+    }
+
+    private List<GrantedAuthority> getRoles(Role role) {
+        String roleName = role.getRoleName();
+        // Convert the roleName to a GrantedAuthority object
+        // For example:
+        return Collections.singletonList(new SimpleGrantedAuthority(roleName));
     }
 
 //    public abstract boolean validateCredentials(String username, String password);
